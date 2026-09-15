@@ -1,0 +1,44 @@
+SOC/MSP:l1,l2,t1,t2:
+http://208.8.8.133/otrs/customer.pl
+user1 C1sc0123
+
+SOC/MSP: ,t3:-t4
+http://208.8.8.133/otrs/index.pl
+admin C1sc0123
+
+3 way Handshake
+SA-SA-E
+
+	 --SYN-->
+	>--ACK-->
+	>--SYN/ACK-->
+	>--ESTABLISHED--
+
+Layers of security
+
+Layer 1: Physical
+netsh wlan show profile name=" " key=clear
+
+Layer 2: DATA LINK/MAC ADDRESS
+nmap -sp 10.3.3.0/24
+
+Layer 3: Network: ip address: victim = 10.3.3.n
+ping nmap -sP 10.3.3.0/24
+
+Layer 4: transPORT: nmap -v 10.3.3.n
+PORT 139 (Netbios) and 445 (Microsoft DS) is dangerous if established by hacker
+
+Layer 5: Session attack port 139 netbios session:
+
+cmd  
+net use x: /delete
+net use \\10.3.3.n\ipc$
+
+Layer 6: presentation : .jpg, .bmp, .png, .mp4, .mov
+
+Layer 7: apps: microsoft-ds:445 
+
+
+
+
+DATA + publicKey =========> ciphertextDATA
